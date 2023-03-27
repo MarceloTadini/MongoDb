@@ -13,6 +13,10 @@ router.get("/register", CustumersController.index)
 router.post("/register/add",CustumersController.add)
 
 //Listar
-router.get("/list", CustumersController.listUsers)
+router.get("/list", CustumersController.list)
+
+//editar
+router.get('/edit', CustumersController.formEdit)
+router.post('/edit/:id', CustumersController.edit)
 
 module.exports = router

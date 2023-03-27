@@ -33,18 +33,56 @@ async function add(req, res) {
  })
 }
 
-async function listUsers(req, res) {
+async function list(req, res) {
 //Método do mongoose para encontrar no banco de dados
    const users = await CustumersModel.find()
 
-   res.render('listUsers', {
+   res.render('list', {
       title: 'Listagem de usuários!',
       users: users,
+   })
+}
+
+async function formEdit(req, res){
+   const {id}= req.query
+
+   //retorna o usuário
+   const user = await CustumersModel.findById(id)
+
+   res.render('edit', {
+      title: 'Editar Usuário',
+      user
+   })
+}
+
+async function edit(req, res){
+   const {
+      name,
+      age,
+      email,
+   } = req.body
+
+   const {id} = req.params
+
+   const user = await CustumersModel.findById(id)
+
+   user.name = name
+   user.age = age
+   user.email = email
+
+   user.save()
+
+   res.render('edit', {
+      title: 'Editar usuário',
+      user,
+      message: 'Usuário alterado com sucesso!'
    })
 }
 
 module.exports = {
     add,
     index,
-    listUsers
+    list,
+    formEdit,
+    edit
 }
