@@ -1,6 +1,7 @@
 const CustumersModel = require('../models/custumers')
+const { crypto } = require('../helpers/password')
 
-function add(req, res) {
+async function add(req, res) {
  const {
     name,
     age,
@@ -8,11 +9,13 @@ function add(req, res) {
     password
  } = req.body
 
+ const passwordCrypto = await crypto(password) //passando a senha por parâmetro, afunção já vai retornar criptografada
+
  const register = new CustumersModel({
     name,
     age,
     email,
-    password
+    password: passwordCrypto
  })
 
  register.save()
