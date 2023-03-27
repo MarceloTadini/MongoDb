@@ -1,6 +1,14 @@
 const CustumersModel = require('../models/custumers')
 const { crypto } = require('../helpers/password')
 
+const defaultTitle = 'Cadastro de Clientes'
+
+function index(req,res) {
+   res.render('register', {
+       title: defaultTitle
+   })
+} 
+
 async function add(req, res) {
  const {
     name,
@@ -19,11 +27,24 @@ async function add(req, res) {
  })
 
  register.save()
- res.send('Cadastro realizado')
+ res.render('register', {
+   title: defaultTitle,
+   message: "Cadastro realizado com sucesso!"
+ })
+}
 
- res.end()
+async function listUsers(req, res) {
+//Método do mongoose para encontrar no banco de dados
+   const users = await CustumersModel.find()
+
+   res.render('listUsers', {
+      title: 'Listagem de usuários!',
+      users: users,
+   })
 }
 
 module.exports = {
-    add
+    add,
+    index,
+    listUsers
 }
