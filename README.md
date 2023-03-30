@@ -25,7 +25,9 @@
 ```` git clone https://github.com/MarceloTadini/MongoDb.git ````
 * Instale as dependências: ```` npm install ````
 * Inicie o servidor: ```` npm run dev ````
-* Acesse o do seu navegador.
+* Acesse o localhost no seu navegador.
 
+## :computer: Exemplo de Funcionamento
 
+![Desktop 2023 03 30 - 17 01 46 02](https://user-images.githubusercontent.com/57718626/228952792-247eb315-eb14-40f3-8164-8377ccee47b3.gif)
 
