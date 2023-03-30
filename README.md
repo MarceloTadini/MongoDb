@@ -17,7 +17,11 @@
 ##  :video_game: Tecnologias Utilizadas 
 * NodeJs;
 * JavaScript;
+* Template Engine: EJS;
 * Bibliotecas do Node Package Manager;
+  - Bcrypt: para encriptografar as senhas.
+  - Express: integrar a engine, gerenciar requisições.
+  - Mongoose: integração com o banco de dados.
 * MongoDb;
 
 ## :rocket: Como executar 
